@@ -1,0 +1,23 @@
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+        String text = scan.nextLine();
+        List<String> output = new ArrayList<>();
+        Pattern pattern = Pattern.compile("([##|])(?<name>[A-Za-z ]+)\\1(?<points>\\d+)\\1");
+        Matcher matcher = pattern.matcher(text);
+        int points = 0;
+
+        while (matcher.find()) {
+            output.add(String.format("Player: %s,  Score: %s", matcher.group("name"), matcher.group("points")));
+            points += Integer.parseInt(matcher.group("points"));
+        }
+        System.out.printf("You have total points: %d!%n", points);
+        output.forEach(System.out::println);
+    }
+}
