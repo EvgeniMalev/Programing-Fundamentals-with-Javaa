@@ -1,0 +1,46 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+        int[] arr = Arrays.stream(scan.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+
+        if (arr.length %2 == 0){
+         System.out.println("The middle elements are: ");
+         
+      
+         int x = arr[(arr.length/2) - 1];
+         System.out.println(x);
+            int sumLeft = 0;
+            int sumRight = 0;
+            for (int i = arr.length/2; i >= 0; i--) {
+                sumLeft += i;
+            }
+         int y = arr[arr.length/2];
+         System.out.println(y);
+            for (int j = arr.length/2; j < arr.length; j++) {
+                sumRight += j;
+            }
+            System.out.println(sumLeft);
+            System.out.println(sumRight);
+           } else {
+      
+         int z = arr[arr.length/2];
+         System.out.println("The middle elements is: ");
+         System.out.println(z);
+          int sumLeft = 0;
+          int sumRight = 0;
+            for (int i = arr.length/2; i >= 0; i--) {
+                sumLeft += i;
+      }
+                   for (int j = arr.length/2 ; j < arr.length; j++) {
+                sumRight -= j;
+            }
+         System.out.println(sumLeft);
+         System.out.println(sumRight);
+     }
+    }
+}
