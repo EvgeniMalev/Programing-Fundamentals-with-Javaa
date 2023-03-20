@@ -1,31 +1,30 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
- 
- //за редакция
+import java.io.*;
+import java.util.*;
+  
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
- 
-        String[] numbersArr = Arrays.stream(scanner.nextLine().split(" "))
-                .mapToString().toArray();
- 
 
- 
+      public static void main(String args[]) {
+        System.out.println("Enter string array size");
+        Scanner in = new Scanner(System.in);
+        int i = in.nextInt();
+
+        String[] arr = new String[i];
+                for (int j = 0; j < i; j++) {
+          System.out.println("Enter next element");
+          arr[j] = in.next();
+        }
+
         TreeMap<String, Integer> countMap = new TreeMap<>();
-        for (String num : numbersArr) {
-            if (!countMap.containsKey(num)) {
-                countMap.put(num, 1);
+        for (String s : arr) {
+            if (!countMap.containsKey(s)) {
+                countMap.put(s, 1);
             } else {
-                int value = countMap.get(num);
-                countMap.put(num, value + 1);
+                int value = countMap.get(s);
+                countMap.put(s, value + 1);
             }
+        for (Map.Entry<String, Integer>  entry : countMap.entrySet()) {
+            System.out.printf("%s -> %d%n", entry.getKey(), entry.getValue());
         }
- 
-        for (Map.Entry<String, Integer> entry : countMap.entrySet()) {
-            System.out.printf("%s -> %s%n", entry.getKey(), entry.Key());
         }
- 
+      }
     }
-} 
