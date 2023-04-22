@@ -1,0 +1,42 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int numbeOfCommands = Integer.parseInt(scanner.nextLine());
+        List<String> teamsCL = new ArrayList<>();
+        List<String> teamsLE = new ArrayList<>();
+        
+        for (int i = 1; i <= numbeOfCommands; i++) {
+            String command = scanner.nextLine();
+            String [] token = command.split(" ");
+            String name = token[0];
+            String command0 = token[1];
+            String command1 = token[2];
+        
+            if (teamsCL.contains(name) && command1.equals("league")) {
+                System.out.printf("%s is already in the list!%n", name);
+            } else if (teamsLE.contains(name) && command1.equals("league")) {  
+                System.out.printf("%s is already in the list!%n", name);
+            } else if (command0.equals("Champions")) {
+                teamsCL.add(name);
+            } else if (command0.equals("Europe")){
+                teamsLE.add(name);
+            }
+        }
+        
+        System.out.printf("The teams playing in Champions league are: \n");
+        for (int i = 0; i < teamsCL.size(); i++) {
+            System.out.printf("%s%n", teamsCL.get(i));
+        }
+
+        System.out.printf("The teams playing in Europe league are: \n");
+        for (int i = 0; i < teamsLE.size(); i++) {
+            System.out.printf("%s%n", teamsLE.get(i));
+        }
+
+    }
+}
