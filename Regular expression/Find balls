@@ -1,0 +1,27 @@
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+ 
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+ 
+        String text = scanner.nextLine();
+        Pattern FindballsPattern = Pattern.compile("([@#])(?<word>[a-z]{3,})\\1");
+        //Pattern hiddenWordPattern = Pattern.compile("(@|#)(?<word>[A-Za-z]{3,})\\1\\1(?<mirror>[A-Za-z]{3,})\\1");
+        Matcher matcher = FindballsPattern.matcher(text);
+		
+		int FindballsCount = 0;
+        List<String> balls = new ArrayList<>();
+        while (matcher.find()){
+            FindballsCount++;
+        }
+        
+        if (FindballsCount == 0){
+            System.out.println("No balls found!");
+        } else {
+            System.out.printf("%d balls found!%n", FindballsCount);
+        }
+       
+  }
+}
