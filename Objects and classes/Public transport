@@ -1,0 +1,68 @@
+import java.util.*;
+
+public class Publictransport {
+
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+        String[] input = scan.nextLine().split(", ");
+        Buslinedata data = new Busline(input[0], input[1], input[2]);
+        int n = Integer.parseInt(scan.nextLine());
+
+        for (int i = 0; i < n; i++) {
+            input = scan.nextLine().split(": ");
+            switch (input[0]) {
+                case "Edittimetable":
+                    data.edittimetable(input[1]);
+                    break;
+                case "ChangeLinenumber":
+                    data.changelinenumber(input[1]);
+                    break;
+                case "Rename":
+                    data.rename(input[1]);
+                    break;
+            }
+        }
+        System.out.println(data.output());
+    }
+
+    static class Busline {
+        String timetable;
+        String servingbuses;
+        String numberofstops;
+
+        public Article(String timetable, String servingbuses, String numberofstops) {
+            this.timetable = timetable;
+            this.servingbuses = servingbuses;
+            this.numberofstops = numberofstops;
+        }
+
+        public void rename(String renamebusstop) {
+            this.renamebusstop = renamebusstop;
+        }
+
+        public void editContent(String numberbusservices) {
+            this.numberbusservices = numberbusservices;
+        }
+
+        public void changetimetable(String timetable) {
+            this.timetable = timetable;
+        }
+
+        public String getbusstop() {
+            return busstop;
+        }
+
+        public String busnumber() {
+            return busnumber;
+        }
+
+        public String getbusnumber() {
+            return busnumber;
+        }
+
+        public String output() {
+            return String.format("%s - %s: %s%n", gettimetable(), getbusstop(), getbusnumber());
+        }
+    }
+}
