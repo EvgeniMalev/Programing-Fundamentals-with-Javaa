@@ -1,0 +1,33 @@
+
+import java.util.Scanner;
+
+
+public class Figures {
+  public static void(String[] args) {
+  
+  Scanner scanner = new scanner(System.in);
+   int a = Integer.parseInt(scanner.nextLine());
+   int b = Integer.parseInt(scanner.nextLine());
+   int d = Integer.parseInt(scanner.nextLine());
+   int r = Integer.parseInt(scanner.nextLine());
+   
+  int rectanglearea = a*b;
+  int squarearea = d*d;
+  int circlearea = 2*3.14*r;
+  p = m+n+o; p1 = p/2;
+  int trianglearea = peqrt(p1*(p1-a)*(p1-b)*(p1-c));
+    
+  
+  
+  public static void main(String[] args) {
+    Main myObj1 = new Main();
+	Main myObj2 = new Main();
+	Main myObj3 = new Main();
+	Main myObj4 = new Main();
+	
+    System.out.println(myObj1.rectanglearea);
+	System.out.println(myObj2.squarearea);
+	System.out.println(myObj3.circlearea);
+	System.out.println(myObj4.trianglearea)
+  }
+}  
