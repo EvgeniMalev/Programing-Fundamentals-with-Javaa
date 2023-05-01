@@ -1,0 +1,24 @@
+
+import java.util.ArrayList;  
+import java.util.Scanner;  
+import java.util.*;  
+
+public class Wordsmerger {
+
+   public static void main(String[] args) {  
+      Scanner scanner = new Scanner(System.in);
+      
+  
+  // split string of words
+      String[] words = scanner.nextLine().split(" ");  
+     
+  // put the words in a array list   
+      List<String> wordList = Arrays.asList(words);  
+     
+  // print the words in a new line each   
+      for (String e : wordList) {  
+         System.out.println(e); 
+        }
+       
+   }  
+} 
