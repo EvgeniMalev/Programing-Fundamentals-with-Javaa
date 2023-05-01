@@ -1,0 +1,28 @@
+
+import java.util.ArrayList;  
+import java.util.Scanner;  
+import java.util.*;  
+
+public class Main {
+
+   public static void main(String[] args) {  
+    Scanner scanner = new Scanner(System.in);
+    
+    Scanner si = new Scanner(System.in);
+
+    List<Integer> cl = new ArrayList<>();
+    List<String> al = new ArrayList<>();
+
+    int amount = si.nextInt();    
+    int quantity = si.nextInt();
+    
+    for (int i = 0; i < amount ; i++) {
+        al.add(si.nextLine());
+    }
+       System.out.println(al);
+    for (int i = 0; i < quantity ; i++) {
+        cl.add(Integer.parseInt(si.nextLine()));
+    }   
+         System.out.println(cl); 
+   }  
+} 
