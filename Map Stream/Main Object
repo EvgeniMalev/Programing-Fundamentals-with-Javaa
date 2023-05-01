@@ -1,0 +1,29 @@
+import java.util.*;
+
+public class MainObject {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int countGroupOfwords = Integer.parseInt(scanner.nextLine());
+        Map<String, List<String>> WordDictionary = new LinkedHashMap<>();
+
+        for (int i = 0; i < countGroupOfwords; i++) {
+            String mainobject = scanner.nextLine();
+            String subobject1 = scanner.nextLine();
+            String subobject2 = scanner.nextLine();
+            String subobject3 = scanner.nextLine();
+            String subobject4 = scanner.nextLine();
+            
+            WordDictionary.putIfAbsent(mainobject, new ArrayList<>());
+            WordDictionary.get(mainobject).add(subobject1);
+            WordDictionary.get(mainobject).add(subobject2);
+            WordDictionary.get(mainobject).add(subobject3);
+            WordDictionary.get(mainobject).add(subobject4);
+        }
+
+        for (Map.Entry<String, List<String>> entry : WordDictionary.entrySet()) {
+            System.out.printf("%s - %s%n", entry.getKey(), String.join(", ", entry.getValue()));
+        }
+        
+    }
+}
