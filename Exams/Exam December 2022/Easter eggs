@@ -1,0 +1,23 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.Scanner;
+
+public class Easter Eggs {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+// scan the String from nextLine        
+        String text = scanner.nextLine();
+    
+// create a file with the requirements     
+        Pattern pattern = Pattern.compile("([@#]+)([a-z]{3,})([^a-zA-Z0-9]*)(\\d+)");
+        Matcher matcher = pattern.matcher(text);
+        
+// find it on the text
+        while (matcher.find()) {
+            String color = matcher.group(2);
+            int amount = Integer.parseInt(matcher.group(4));
+            System.out.println("You found " + amount + " " + color + " eggs.");
+        }
+    }
+}
