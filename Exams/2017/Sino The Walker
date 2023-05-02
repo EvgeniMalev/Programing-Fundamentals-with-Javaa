@@ -1,7 +1,10 @@
+// Importing required classes
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+// Main class
 public class Sino The Walker {
 
 
@@ -16,7 +19,7 @@ public class Sino The Walker {
 			input = new Scanner(System.in);
 			System.out.println("Time Sino leaves Softuni:");
 			String time1 = input.next();
-			
+	// Driver method		
 		Scanner scanner = new Scanner(System.in);
 			
 			int steps = Integer.parseInt(scanner.nextLine()) % 86400;
