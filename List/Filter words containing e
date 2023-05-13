@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+
+public class WordFilter {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        List<String> inputLines = new ArrayList<>();
+        String line;
+
+        System.out.println("Enter lines of text. Type 'end' to finish.");
+
+        while (true) {
+            line = scanner.nextLine();
+            if (line.equalsIgnoreCase("end")) {
+                break;
+            }
+            inputLines.add(line);
+        }
+
+        List<String> filteredWords = inputLines.stream()
+                .filter(word -> word.contains("e"))
+                .sorted()
+                .collect(Collectors.toList());
+
+        System.out.println("Filtered words with 'e':");
+        filteredWords.forEach(System.out::println);
+    }
+}
