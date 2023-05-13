@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class Remove3rdelement {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the size of the array: ");
+        
+        // initialize the size of the array 
+        int size = scanner.nextInt();
+        // array input
+        int[] array = new int[size];
+
+        for (int i = 0; i < size; i++) {
+            array[i] = scanner.nextInt();
+        }
+
+        Map<Integer, Integer> thirdMembersMap = new HashMap<>();
+        // List with original array
+        List<Integer> originalArray = new ArrayList<>();
+        // List with the new array
+        List<Integer> thirdMembersArray = new ArrayList<>();
+
+        for (int i = 0; i < size; i++) {
+            originalArray.add(array[i]);
+        // if statement for the third element
+            if ((i + 1) % 3 == 0) {
+                thirdMembersMap.put(i, array[i]);
+                thirdMembersArray.add(array[i]);
+            }
+        }
+        // print the third element
+        System.out.println("Original Array: " + originalArray);
+        System.out.println("Third Members Array: " + thirdMembersArray);
+    }
+}
