@@ -1,0 +1,38 @@
+import  java.util.*; 
+import  java.util.Scanner; 
+import  java.util.Arrays; 
+
+public   class   ThreeLargestIntegers {  
+   public   static   void   main (String[] args)  {
+     Scanner   scanner   =   new   Scanner (System.in);
+     // Define the size of the array
+     System.out.print( "Enter the size of the array: " ); 
+     // Enter the elements of the array
+     int   size   =  scanner.nextInt(); 
+     // Enter the components of the array
+     int [] array =  new   int [size]; 
+     System.out.println( "Enter the elements of the array:" ); 
+     for  ( int   i   =   0 ; i < size; i++) {
+      array[i] = scanner.nextInt(); 
+      }
+       int [] largestIntegers = findThreeLargestIntegers(array); 
+   int   sum   =  calculateSum(largestIntegers); 
+   System.out.println( "The three largest integers are: "  + Arrays.toString(largestIntegers));
+   System.out.println( "Their sum is: "  + sum); 
+   }
+   public   static   int [] findThreeLargestIntegers( int [] array) { 
+   int [] largestIntegers =  new   int [ 3 ]; 
+   Arrays.sort(array);  int   length   =  array.length;
+         largestIntegers[ 0 ] = array[length -  1 ];
+         largestIntegers[ 1 ] = array[length -  2 ]; 
+         largestIntegers[ 2 ] = array[length -  3 ]; 
+     return  largestIntegers; 
+   }
+   public   static   int   calculateSum (int[] array)  { 
+   int   sum   =   0 ; 
+     for  ( int  num : array) { 
+       sum += num; 
+	   }   
+	   return  sum; 
+   }
+ }
