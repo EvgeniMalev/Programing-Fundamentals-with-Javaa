@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class IntegerorDouble {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter a string with space-separated elements:");
+
+        String input = scanner.nextLine();
+
+        String[] elements = input.split(" ");
+
+        List<Integer> integerList = new ArrayList<>();
+        List<Double> doubleList = new ArrayList<>();
+
+        for (String element : elements) {
+            try {
+                integerList.add(Integer.parseInt(element));
+            } catch (NumberFormatException e1) {
+                try {
+                    doubleList.add(Double.parseDouble(element));
+                } catch (NumberFormatException e2) {
+                    System.out.println("Invalid element: " + element);
+                }
+            }
+        }
+
+        integerList.sort(Integer::compareTo);
+        doubleList.sort(Double::compareTo);
+
+        System.out.println("Sorted Integer List:");
+        for (Integer num : integerList) {
+            System.out.println(num);
+        }
+
+        System.out.println("Sorted Double List:");
+        for (Double num : doubleList) {
+            System.out.println(num);
+        }
+    }
+}
