@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+    
+        // create new two list of strings
+        List<String> vowelList = new ArrayList<>();
+        List<String> consonantList = new ArrayList<>();
+        
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter words (separated by spaces):");
+        String input = scanner.nextLine();
+        
+        // Split the input string into individual words
+        String[] words = input.split(" ");
+        
+        // Iterate over each word and categorize them based on the first character
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                char firstChar = Character.toLowerCase(word.charAt(0));
+                if (isVowel(firstChar)) {
+                    vowelList.add(word);
+                } else {
+                    consonantList.add(word);
+                }
+            }
+        }
+        
+        System.out.println("Words starting with a vowel: " + vowelList);
+        System.out.println("Words starting with a consonant: " + consonantList);
+    }
+    
+    // Helper method to check if a character is a vowel
+    private static boolean isVowel(char c) {
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+    }
+}
