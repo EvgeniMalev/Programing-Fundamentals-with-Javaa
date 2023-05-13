@@ -1,0 +1,43 @@
+ import java.util.*;
+ import java.util.Scanner;
+     
+	 public class ConverttoASCII {
+        public static void main(String[] args) {
+
+              Scanner scanner = new Scanner(System.in);
+              // initialize the size of the array
+              int size = scanner.nextInt();
+              // int arrays in new line
+              int[] array = new int[size];
+     
+              System.out.println("Enter the elements of the array:");
+
+              for (int i = 0; i < size; i++) {
+     
+                  array[i] = scanner.nextInt();
+
+              }
+
+             // Convert a array index to ASCII code
+              String asciiString = convertToASCII(array);
+
+              System.out.println("ASCII representation: " + asciiString);
+     
+          }
+     
+          public static String convertToASCII(int[] array) {
+             // String builder to convert the ASCII to array
+              StringBuilder asciiBuilder = new StringBuilder();
+     
+              for (int num : array) {
+     
+                  char character = (char) num;
+
+                  asciiBuilder.append(character);
+
+              }
+
+              return asciiBuilder.toString();
+
+          }
+      }
