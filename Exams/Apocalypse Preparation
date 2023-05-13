@@ -1,0 +1,72 @@
+import java.util.*;
+
+public class ApocalypsePrep {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        List<Integer> textiles = new ArrayList<>();
+        List<Integer> medicaments = new ArrayList<>();
+
+        Arrays.stream(scanner.nextLine().split("\\s+"))
+                .map(Integer::parseInt)
+                .forEach(textiles::add);
+
+        Arrays.stream(scanner.nextLine().split("\\s+"))
+                .map(Integer::parseInt)
+                .forEach(medicaments::add);
+
+        Map<String, Integer> items = new HashMap<>();
+        int medKit = 25;
+        int bandage = 10;
+        int antibiotic = 30;
+
+        while (!textiles.isEmpty() && !medicaments.isEmpty()) {
+            int textile = textiles.remove(0);
+            int medicament = medicaments.remove(medicaments.size() - 1);
+            int sum = textile + medicament;
+
+            if (sum == medKit) {
+                items.put("MedKit", items.getOrDefault("MedKit", 0) + 1);
+            } else if (sum == bandage) {
+                items.put("Bandage", items.getOrDefault("Bandage", 0) + 1);
+            } else if (sum == antibiotic) {
+                items.put("Antibiotic", items.getOrDefault("Antibiotic", 0) + 1);
+            } else if (sum > medKit) {
+                items.put("MedKit", items.getOrDefault("MedKit", 0) + 1);
+                int remaining = sum - medKit;
+                if (!medicaments.isEmpty()) {
+                    int nextMedicament = medicaments.remove(medicaments.size() - 1);
+                    nextMedicament += remaining;
+                    medicaments.add(nextMedicament);
+                }
+            } else {
+                medicament += 10;
+                medicaments.add(0, medicament);
+            }
+        }
+
+        if (textiles.isEmpty() && medicaments.isEmpty()) {
+            System.out.println("Textiles and medicaments are both empty.");
+        } else if (textiles.isEmpty()) {
+            System.out.println("Textiles are empty.");
+        } else {
+            System.out.println("Medicaments are empty.");
+        }
+
+        if (!items.isEmpty()) {
+            System.out.println("Created items:");
+            items.entrySet().stream()
+                    .sorted(Map.Entry.<String, Integer>comparingByValue().reversed().thenComparing(Map.Entry.comparingByKey()))
+                    .forEach(entry -> System.out.printf("%s - %d%n", entry.getKey(), entry.getValue()));
+        }
+
+        if (!medicaments.isEmpty()) {
+            System.out.println("Medicaments left: " + String.join(", ", medicaments.stream().map(Object::toString).toArray(String[]::new)));
+        }
+
+        if (!textiles.isEmpty()) {
+            System.out.println("Textiles left: " + String.join(", ", textiles.stream().map(Object::toString).toArray(String[]::new)));
+        }
+    }
+}
