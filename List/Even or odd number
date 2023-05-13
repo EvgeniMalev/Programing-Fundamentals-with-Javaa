@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class EvenorOddnumber {
+    public static void main(String[] args) {
+        List<Integer> oddList = new ArrayList<>();
+        List<Integer> evenList = new ArrayList<>();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter integers (type 'end' to finish):");
+
+        String input;
+        while (true) {
+            input = scanner.nextLine();
+            if (input.equals("end")) {
+                break;
+            }
+            try {
+                int number = Integer.parseInt(input);
+                processNumber(number, oddList, evenList);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter an integer or 'end' to finish.");
+            }
+        }
+
+        // Sort the lists in ascending order
+        Collections.sort(oddList);
+        Collections.sort(evenList);
+
+        System.out.println("Odd numbers (sorted): " + oddList);
+        System.out.println("Even numbers (sorted): " + evenList);
+    }
+
+    // Helper method to process a number and categorize it
+    private static void processNumber(int number, List<Integer> oddList, List<Integer> evenList) {
+        if (number % 2 == 0) {
+            evenList.add(number);
+        } else {
+            oddList.add(number);
+        }
+    }
+}
