@@ -1,0 +1,18 @@
+import java.util.*;
+
+public class Split {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        String[] array = scanner.nextLine().split(" ");
+
+        // Split the array and print each member on a new line
+        for (String str : array) {
+            String[] split = str.split("");
+            for (String s : split) {
+                System.out.println(s);
+            }
+            System.out.println(); // Add an empty line between array elements
+        }
+    }
+}
