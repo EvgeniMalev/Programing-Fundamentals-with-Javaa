@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class Sortwords {
+    public static void main(String[] args) {
+        List<String> vowelList = new ArrayList<>();
+        List<String> consonantList = new ArrayList<>();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter words (type 'end' to finish):");
+
+        String input;
+        while (true) {
+            input = scanner.nextLine();
+            if (input.equals("end")) {
+                break;
+            }
+            processWord(input, vowelList, consonantList);
+        }
+
+        // Sort the lists in ascending order
+        Collections.sort(vowelList);
+        Collections.sort(consonantList);
+
+        System.out.println("Words starting with a vowel (sorted): " + vowelList);
+        System.out.println("Words starting with a consonant (sorted): " + consonantList);
+    }
+
+    // Helper method to process a word and categorize it
+    private static void processWord(String word, List<String> vowelList, List<String> consonantList) {
+        if (!word.isEmpty()) {
+            char firstChar = Character.toLowerCase(word.charAt(0));
+            if (isVowel(firstChar)) {
+                vowelList.add(word);
+            } else {
+                consonantList.add(word);
+            }
+        }
+    }
+
+    // Helper method to check if a character is a vowel
+    private static boolean isVowel(char c) {
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+    }
+}
