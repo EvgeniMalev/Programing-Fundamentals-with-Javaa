@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class Longestwords {
+    public static void main(String[] args) {
+        List<String> shortList = new ArrayList<>();
+        List<String> longList = new ArrayList<>();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter strings (type 'end' to finish):");
+
+        String input;
+        while (true) {
+            input = scanner.nextLine();
+            if (input.equals("end")) {
+                break;
+            }
+            processString(input, shortList, longList);
+        }
+
+        // Sort the lists in ascending order
+        Collections.sort(shortList);
+        Collections.sort(longList);
+
+        System.out.println("Short strings (sorted): " + shortList);
+        System.out.println("Long strings (sorted): " + longList);
+    }
+
+    // Helper method to process a string and categorize it
+    private static void processString(String str, List<String> shortList, List<String> longList) {
+        if (str.length() < 5) {
+            shortList.add(str);
+        } else {
+            longList.add(str);
+        }
+    }
+}
