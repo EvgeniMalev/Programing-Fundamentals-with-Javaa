@@ -1,0 +1,69 @@
+import java.util.*;
+
+public class CarDetails {
+    public static void main(String[] args) {
+        HashMap<String, CarDetails> carDetailsMap = new HashMap<>();
+        Scanner scanner = new Scanner(System.in);
+
+        // Taking input from the user
+        while (true) {
+            System.out.print("Pleace write:company,engine,price of the car with whitespace \n");
+            System.out.print("and write quit to exit if You want");
+            String input = scanner.nextLine();
+            
+            if (input.equalsIgnoreCase("quit")) {
+                break;
+            }
+
+            String[] parts = input.split(" ");
+            if (parts.length != 3) {
+                System.out.println("Invalid input. Please enter car company, engine, and price separated by spaces.");
+                continue;
+            }
+
+            String company = parts[0];
+            double engine = Double.parseDouble(parts[1]);
+            int price = Integer.parseInt(parts[2]);
+
+            // Storing car details in the map
+            CarDetails carDetails = new CarDetails(engine, price);
+            carDetailsMap.put(company, carDetails);
+        }
+
+        // Sorting and printing the car details by price
+        List<Map.Entry<String, CarDetails>> sortedCarDetails = new ArrayList<>(carDetailsMap.entrySet());
+        Collections.sort(sortedCarDetails, (entry1, entry2) -> entry1.getValue().getPrice() - entry2.getValue().getPrice());
+
+        System.out.println("Car details sorted by price:");
+        for (Map.Entry<String, CarDetails> entry : sortedCarDetails) {
+            String company = entry.getKey();
+            double engine = entry.getValue().getEngine();
+            int price = entry.getValue().getPrice();
+
+            System.out.println("Company: " + company);
+            System.out.println("Engine: " + engine);
+            System.out.println("Price: " + price);
+            System.out.println();
+        }
+    }
+
+    static class CarDetails {
+        private double engine;
+        private int price;
+
+        public CarDetails(double engine, int price) {
+            this.engine = engine;
+            this.price = price;
+        }
+
+        public double getEngine() {
+            return engine;
+        }
+
+        public int getPrice() {
+            return price;
+        }
+    }
+}
+
+
