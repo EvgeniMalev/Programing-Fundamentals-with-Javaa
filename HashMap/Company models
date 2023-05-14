@@ -1,0 +1,49 @@
+import java.util.*;
+
+public class Companymodels {
+    public static void main(String[] args) {
+        HashMap<String, List<String>> carModels = new HashMap<>();
+        Scanner scanner = new Scanner(System.in);
+
+        // Taking input from the user
+        while (true) {
+            System.out.print("Enter car company and model (or 'end' to exit): ");
+            String input = scanner.nextLine();
+            
+            if (input.equalsIgnoreCase("end")) {
+                break;
+            }
+
+            String[] parts = input.split(" ");
+            if (parts.length != 2) {
+                System.out.println("Invalid input. Please enter car company and model separated by a space.");
+                continue;
+            }
+
+            String company = parts[0];
+            String model = parts[1];
+
+            // Adding the car model to the company's list
+            if (carModels.containsKey(company)) {
+                List<String> models = carModels.get(company);
+                models.add(model);
+            } else {
+                List<String> models = new ArrayList<>();
+                models.add(model);
+                carModels.put(company, models);
+            }
+        }
+
+        // Sorting and printing the models for each company
+        for (String company : carModels.keySet()) {
+            List<String> models = carModels.get(company);
+            Collections.sort(models);
+
+            System.out.println(company + ":");
+            for (String model : models) {
+                System.out.println("- " + model);
+            }
+            System.out.println();
+        }
+    }
+}
