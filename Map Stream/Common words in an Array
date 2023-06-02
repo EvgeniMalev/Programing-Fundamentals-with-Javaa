@@ -1,0 +1,35 @@
+import java.util.*;
+
+public class Arraywords {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a sentence:");
+        String sentence = scanner.nextLine();
+
+        // Split the sentence into an array of words
+        String[] words = sentence.split(" ");
+
+        // Create a map to store the word frequency
+        Map<String, Integer> wordFrequency = new HashMap<>();
+
+        // Count the frequency of each word
+        for (String word : words) {
+            wordFrequency.put(word, wordFrequency.getOrDefault(word, 0) + 1);
+        }
+
+        // Sort the words by frequency in descending order
+        List<Map.Entry<String, Integer>> sortedWords = new ArrayList<>(wordFrequency.entrySet());
+        sortedWords.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+
+        // Print the two most common words
+        int count = 0;
+        System.out.println("Two most common words:");
+        for (Map.Entry<String, Integer> entry : sortedWords) {
+            if (count >= 2) {
+                break;
+            }
+            System.out.println(entry.getKey());
+            count++;
+        }
+    }
+}
