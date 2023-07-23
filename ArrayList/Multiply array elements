@@ -1,0 +1,37 @@
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Multiplyarrayelements {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Create the ArrayList to store the elements
+        ArrayList<Integer> array = new ArrayList<>();
+
+        // Input array elements
+        System.out.println("Enter the elements of the array (enter a non-numeric value to stop):");
+
+        // You can also put while "end" to end the input array
+        while (scanner.hasNextInt()) {
+            int element = scanner.nextInt();
+            array.add(element);
+        }
+
+        // Multiply each element by two
+        for (int i = 0; i < array.size(); i++) {
+            int newValue = array.get(i) * 2;
+            array.set(i, newValue);
+        }
+
+        // Print the new array
+        System.out.println("The new array after multiplying each element by two:");
+        for (int element : array) {
+            System.out.print(element + " ");
+        }
+
+        // Close the scanner
+        scanner.close();
+    }
+}
