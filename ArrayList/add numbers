@@ -1,0 +1,20 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Integer> integers = new ArrayList<Integer>();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the length of the list: ");
+        int a = Integer.parseInt(scanner.nextLine());
+
+        for (int i = 0; i < a; i++) {
+            System.out.print("Enter number " + (i + 1) + ": ");
+            int inputNumber = Integer.parseInt(scanner.nextLine());
+            integers.add(inputNumber);
+        }
+
+        System.out.println("List of " + a + " numbers: " + integers);
+    }
+}
