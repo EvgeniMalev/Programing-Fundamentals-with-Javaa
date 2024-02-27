@@ -1,0 +1,43 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the number of rows for the matrix:");
+        int n = Integer.parseInt(scanner.nextLine());
+        System.out.println("Enter the number of columns for the matrix:");
+        int m = Integer.parseInt(scanner.nextLine());
+
+        System.out.printf("You wrote a matrix with %d x %d members\n", n, m);
+
+        char[][] matrix = new char[n][m];
+        Random random = new Random();
+
+        // Filling the matrix with random characters
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                matrix[i][j] = (char) (random.nextInt(26) + 'a'); 
+            }
+        }
+
+        // Printing the matrix (not displayed to the user)
+        System.out.println("Matrix (not displayed to the user):");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        System.out.println("Write a member from the matrix: enter a row and a column");
+
+        int row = Integer.parseInt(scanner.nextLine()) - 1; 
+        int col = Integer.parseInt(scanner.nextLine()) - 1; 
+
+        char selectedElement = matrix[row][col]; 
+
+        System.out.printf("You selected the element: %c\n", selectedElement);
+    }
+}
