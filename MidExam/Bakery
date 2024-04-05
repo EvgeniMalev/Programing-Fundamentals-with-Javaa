@@ -1,0 +1,57 @@
+/******************************************************************************
+
+A program that calculate a biscuit production of a Bakery in Java
+
+*******************************************************************************/
+
+
+import java.util.Scanner;
+
+public class Bakery {
+    public static void solve() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of biscuits per worker: ");
+        int biscuitsPerWorker = Integer.parseInt(scanner.nextLine());
+
+        System.out.print("Enter the number of workers: ");
+        int workers = Integer.parseInt(scanner.nextLine());
+
+        System.out.print("Enter the competing production amount: ");
+        int productionCompeting = Integer.parseInt(scanner.nextLine());
+
+        int days = 30;
+        int totalProduction = 0;
+
+        for (int day = 1; day <= days; day++) {
+            int productionPerDay = biscuitsPerWorker * workers;
+
+            if (day % 3 == 0) {
+                productionPerDay = (int) Math.floor(productionPerDay * 0.75);
+            }
+
+            totalProduction += productionPerDay;
+        }
+
+        System.out.println("You have produced " + totalProduction + " biscuits for the past month.");
+
+        int difference;
+        double percentage;
+
+        if (totalProduction > productionCompeting) {
+            difference = totalProduction - productionCompeting;
+            percentage = ((double) difference / productionCompeting) * 100;
+            System.out.printf("You produce %.2f percent more biscuits.\n", percentage);
+        } else {
+            difference = productionCompeting - totalProduction;
+            percentage = ((double) difference / productionCompeting) * 100;
+            System.out.printf("You produce %.2f percent less biscuits.\n", percentage);
+        }
+
+        scanner.close();
+    }
+
+    public static void main(String[] args) {
+        solve();
+    }
+}
